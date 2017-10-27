@@ -19,7 +19,6 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgMessagesDirs['PopcornEditor'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['PopcornEditor'] =  dirname(__FILE__) . '/PopcornEditor.i18n.php';
 
 $wgHooks['BeforePageDisplay'][] = 'PopcornEditorHooks::beforePageDisplay';
 $wgHooks['MakeGlobalVariablesScript'][] = 'PopcornEditorHooks::makeGlobalVariablesScript';
