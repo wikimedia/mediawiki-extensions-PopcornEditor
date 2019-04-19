@@ -1,7 +1,7 @@
 <?php
 /**
  * Wrapper to integrate SVG-edit in-browser vector graphics editor in MediaWiki.
- * http://www.mediawiki.org/wiki/Extension:PopcornEditor
+ * https://www.mediawiki.org/wiki/Extension:PopcornEditor
  *
  * Currently using a lot of base code form old SVGEdit extension.
  *
