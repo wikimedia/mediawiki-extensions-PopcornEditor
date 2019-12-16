@@ -48,7 +48,7 @@ $wgResourceModules += array(
 			'popcorn-editor-close',
 		),
 		'dependencies' => array(
-			'jquery.ui.resizable'
+			'jquery.ui'
 		)
 	),
 );
