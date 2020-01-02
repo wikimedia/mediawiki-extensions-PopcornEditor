@@ -16,7 +16,6 @@ class PopcornEditorHooks {
 	 * @param $skin Skin current skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
-		global $wgUser, $wgRequest, $wgPopcornEditorInline;
 		$title = $out->getTitle();
 		$modules = array();
 		if( self::trigger( $title ) ) {
