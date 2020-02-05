@@ -17,12 +17,12 @@ class PopcornEditorHooks {
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		$title = $out->getTitle();
-		$modules = array();
-		if( self::trigger( $title ) ) {
+		$modules = [];
+		if ( self::trigger( $title ) ) {
 			$modules[] = 'ext.popcorn.editButton';
 		}
-		if ($modules) {
-			$out->addModules($modules);
+		if ( $modules ) {
+			$out->addModules( $modules );
 		}
 		return true;
 	}
@@ -44,7 +44,7 @@ class PopcornEditorHooks {
 	 * Should the editor links trigger on this page?
 	 *
 	 * @param Title $title
-	 * @return boolean
+	 * @return bool
 	 */
 	private static function trigger( $title ) {
 		return $title && $title->getNamespace() == NS_FILE &&

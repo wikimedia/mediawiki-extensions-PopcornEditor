@@ -18,7 +18,7 @@
 		]
 	},
 	"AutoloadClasses": {
-		"PopcornEditorHooks": "PopcornEditor.hooks.php"
+		"PopcornEditorHooks": "PopcornEditorHooks.php"
 	},
 	"ResourceModules": {
 		"ext.popcorn.editor": {
