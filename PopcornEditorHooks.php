@@ -4,6 +4,8 @@
  * @copyright 2010-2016 Brion Vibber <brion@pobox.com>
  */
 
+use MediaWiki\MediaWikiServices;
+
 class PopcornEditorHooks {
 	/* Static Methods */
 
@@ -17,8 +19,9 @@ class PopcornEditorHooks {
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		$title = $out->getTitle();
+		$user = $out->getUser();
 		$modules = [];
-		if ( self::trigger( $title ) ) {
+		if ( self::trigger( $title, $user ) ) {
 			$modules[] = 'ext.popcorn.editButton';
 		}
 		if ( $modules ) {
@@ -44,12 +47,26 @@ class PopcornEditorHooks {
 	 * Should the editor links trigger on this page?
 	 *
 	 * @param Title $title
+	 * @param User $user
 	 * @return bool
 	 */
-	private static function trigger( $title ) {
-		return $title && $title->getNamespace() == NS_FILE &&
-			$title->userCan( 'edit' ) && $title->userCan( 'upload' ) &&
-			preg_match( '/\.popcorn$/', $title->getText() );
+	private static function trigger( $title, User $user ) {
+		if ( !( $title && $title->getNamespace() == NS_FILE &&
+			preg_match( '/\.popcorn$/', $title->getText() ) )
+		) {
+			return false;
+		}
+
+		// Only check permissions if everything else is fine, to avoid trying to check
+		// if the user can upload to a page that isn't in the file namespace
+		if ( class_exists( 'MediaWiki\Permissions\PermissionManager' ) ) {
+			// MW 1.33+
+			$permManager = MediaWikiServices::getInstance()->getPermissionManagar();
+			return $permManager->userCan( 'edit', $user, $title ) &&
+				$permManager->userCan( 'upload', $user, $title );
+		} else {
+			return $title->userCan( 'edit' ) && $title->userCan( 'upload' );
+		}
 	}
 
 }
