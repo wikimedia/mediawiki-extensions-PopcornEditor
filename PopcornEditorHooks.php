@@ -35,7 +35,7 @@ class PopcornEditorHooks {
 	 *
 	 * Exports a setting if necessary.
 	 *
-	 * @param $vars array of vars
+	 * @param &$vars array of vars
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgPopcornEditorUrl;
