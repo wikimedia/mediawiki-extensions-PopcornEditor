@@ -14,8 +14,9 @@ class PopcornEditorHooks {
 	 *
 	 * Adds the modules to the page
 	 *
-	 * @param $out OutputPage output page
-	 * @param $skin Skin current skin
+	 * @param OutputPage $out output page
+	 * @param Skin $skin current skin
+	 * @return bool
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		$title = $out->getTitle();
@@ -35,7 +36,8 @@ class PopcornEditorHooks {
 	 *
 	 * Exports a setting if necessary.
 	 *
-	 * @param &$vars array of vars
+	 * @param array &$vars array of vars
+	 * @return bool
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgPopcornEditorUrl;
